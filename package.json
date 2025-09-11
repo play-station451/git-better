@@ -1,0 +1,25 @@
+{
+  "name": "git-better",
+  "version": "0.0.1",
+  "description": "Another github alternative (made by an idiot)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://im-playstation451/git-better"
+  },
+  "author": "playstation451",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "svg-captcha": "^1.4.0"
+  }
+}
