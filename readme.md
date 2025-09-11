@@ -14,7 +14,7 @@ I've found that GitHub and most self-hosted alternatives don't fully satisfy my 
 - Git
 
 ```bash
-git clone https://github.com/im-playstation451/git-better
+git clone https://github.com/play-station451/git-better
 cd git-better
 npm install
 npm start
