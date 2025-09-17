@@ -1,0 +1,31 @@
+{
+  "name": "git-better",
+  "version": "1.0.0",
+  "description": "A selfhosted github alternative",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/play-station451/git-better.git"
+  },
+  "author": "playstation451",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/play-station451/git-better/issues"
+  },
+  "homepage": "https://github.com/play-station451/git-better#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mariadb": "^3.4.5",
+    "next": "^15.5.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "uuid": "^13.0.0"
+  }
+}
