@@ -1,14 +1,10 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import mariadb from 'mariadb';
+import { Low } from 'lowdb';
+import { JSONFile } from 'lowdb/node';
 
-const pool = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'Ol20091026',
-    database: 'git_better',
-    connectionLimit: 5
-});
+const file = new JSONFile('db.json');
+const db = new Low(file, { users: [] });
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -19,15 +15,12 @@ export default async function handler(req, res) {
         }
 
         try {
-            const conn = await pool.getConnection();
-            const rows = await conn.query('SELECT * FROM users WHERE username = ?', [username]);
-            conn.release();
+            await db.read();
+            const user = db.data.users.find(u => u.username === username);
 
-            if (rows.length === 0) {
+            if (!user) {
                 return res.status(401).json({ message: 'Invalid credentials' });
             }
-
-            const user = rows[0];
             const passwordMatch = await bcrypt.compare(password, user.password);
 
             if (!passwordMatch) {

@@ -1,14 +1,10 @@
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
-import mariadb from 'mariadb';
+import { Low } from 'lowdb';
+import { JSONFile } from 'lowdb/node';
 
-const pool = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'Ol20091026',
-    database: 'git_better',
-    connectionLimit: 5
-});
+const file = new JSONFile('db.json');
+const db = new Low(file, { users: [] });
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -22,9 +18,9 @@ export default async function handler(req, res) {
             const hashedPassword = await bcrypt.hash(password, 10);
             const id = generateUserId();
 
-            const conn = await pool.getConnection();
-            await conn.query('INSERT INTO users (id, username, password) VALUES (?, ?, ?)', [id, username, hashedPassword]);
-            conn.release();
+            await db.read();
+            db.data.users.push({ id, username, email, password: hashedPassword });
+            await db.write();
 
             return res.status(201).json({ message: 'User registered successfully' });
         } catch (error) {
