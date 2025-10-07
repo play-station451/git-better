@@ -1,0 +1,41 @@
+<style>
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+    }
+    .topbar-left {
+        display: flex;
+        align-items: center;
+    }
+    .topbar-left a {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+    }
+    .topbar-right a {
+        color: white;
+        text-decoration: none;
+    }
+    .menu-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <button class="menu-button">☰</button>
+        <a href="/explore">Explore</a>
+        <a href="/trending">Trending</a>
+    </div>
+    <div class="topbar-right">
+        <a href="/account">Account</a>
+    </div>
+</div>
